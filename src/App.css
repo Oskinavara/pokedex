@@ -1,4 +1,34 @@
 .App {
   text-align: center;
 }
-
+*{
+  margin: inherit;
+  box-sizing: inherit;
+}
+.logo{
+  /* height: 100%; */
+ max-width: 50%;
+}
+.fixed-header{}
+.search-bar{
+  /* position: fixed; */
+  left: 0;
+  right: 0; 
+  margin: auto;
+}
+.search-results{
+  display: inline-block;
+  background: #7d7d7d;
+  color: white;
+  width: 80%;
+  text-align: center;
+}
+.grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-items: center;
+}
+.pokedex-entry{
+  background: white;
+  margin: 1.6%;
+}
