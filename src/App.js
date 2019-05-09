@@ -7,13 +7,12 @@ const App = () => {
   const [data, setData] = useState({});
   const [search, setSearch] = useState("");
   useEffect(() => {
-    async function fetchData() {
+    (async () => {
       const result = await axios.get(
         "http://pokeapi.co/api/v2/pokemon?limit=151"
       );
       setData(result.data["results"]);
-    }
-    fetchData();
+    })();
   }, []);
 
   const handleChange = event => {
@@ -41,6 +40,13 @@ const App = () => {
 
       <div className="search-results">
         <div className="grid">
+          {/* {data.results
+            ? data.results[0].name.search("bu") !== -1
+              ? Object.keys(data).map((pokemon, index) => (
+                  <PokemonCard key={index} pokemonID={index} />
+                ))
+              : ""
+            : ""} */}
           {Object.keys(data).map((pokemon, index) => (
             <PokemonCard key={index} pokemonID={index} />
           ))}
