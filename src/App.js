@@ -5,7 +5,7 @@ import PokemonCard from "./components/PokemonCard.jsx";
 
 const App = () => {
   const [data, setData] = useState({});
-
+  const [search, setSearch] = useState("");
   useEffect(() => {
     async function fetchData() {
       const result = await axios.get(
@@ -16,6 +16,10 @@ const App = () => {
     fetchData();
   }, []);
 
+  const handleChange = event => {
+    setSearch(event.target.value);
+    console.log(search);
+  };
   return (
     <div className="App">
       <header className="fixed-header">
@@ -23,7 +27,12 @@ const App = () => {
           <img src="images/logo.png" alt="" className="logo" />
         </div>
         <div className="search-bar">
-          <input type="text" className="input" name="search" />
+          <input
+            type="text"
+            className="input"
+            name="search"
+            onChange={handleChange}
+          />
           <label>
             <h5 className="input-label">Type to search for Pokemon</h5>
           </label>
