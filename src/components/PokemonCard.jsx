@@ -56,7 +56,7 @@ const PokemonCard = ({ pokemonID }) => {
     <div className="pokemon">
       <img
         src={pokemon.sprites ? pokemon.sprites.front_default : ""}
-        alt={`Pokemon${pokemonID+1}`}
+        alt={`Pokemon${pokemonID + 1}`}
         className="sprite"
       />
       <h2>{pokemon.name}</h2>

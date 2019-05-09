@@ -47,9 +47,11 @@ const App = () => {
                 ))
               : ""
             : ""} */}
-          {Object.keys(data).map((pokemon, index) => (
-            <PokemonCard key={index} pokemonID={index} />
-          ))}
+          {Object.keys(data)
+            .map((pokemon, index) => (
+              <PokemonCard key={index} pokemonID={index} />
+            ))
+            .filter((pokemon, index) => !data[index].name.search(search))}
         </div>
       </div>
     </div>
