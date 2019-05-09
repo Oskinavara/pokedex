@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
+import PokemonCard from "./components/PokemonCard";
 
 const App = () => {
   const [data, setData] = useState({});
+
   useEffect(() => {
     async function fetchData() {
       const result = await axios.get(
@@ -31,9 +33,8 @@ const App = () => {
       <div className="search-results">
         <div className="grid">
           {Object.keys(data).map((pokemon, index) => (
-            <div key={index}>{data[index].name}</div>
+            <PokemonCard key={index} pokemonID={index} />
           ))}
-         
         </div>
       </div>
     </div>
