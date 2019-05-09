@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
-import PokemonCard from "./components/PokemonCard";
+import PokemonCard from "./components/PokemonCard.jsx";
 
 const App = () => {
   const [data, setData] = useState({});
