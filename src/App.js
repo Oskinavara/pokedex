@@ -28,7 +28,6 @@ const App = () => {
     }
     fetchData();
   }, []);
-
   // const handleChange = event => {
   //   // setSearch(event.target.value);
   //   // console.log(search);
