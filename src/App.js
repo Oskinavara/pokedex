@@ -6,15 +6,26 @@ import PokemonCard from "./components/PokemonCard.jsx";
 const App = () => {
   const [data, setData] = useState({});
   const [search, setSearch] = useState("");
+  const [dataNew, setDataNew] = useState([]);
+  const newArray = new Array(151);
+  // useEffect(() => {
+  //   (async () => {
+  //     const result = await axios.get(
+  //       "http://pokeapi.co/api/v2/pokemon?limit=151"
+  //     );
+  //     setData(result.data["results"]);
+  //   })();
+  // }, []);
   useEffect(() => {
     (async () => {
       const result = await axios.get(
-        "http://pokeapi.co/api/v2/pokemon?limit=151"
+        newArray.map(
+          (item, index) => `http://pokeapi.co/api/v2/pokemon/${index + 1}`
+        )
       );
-      setData(result.data["results"]);
+      setData(result);
     })();
   }, []);
-
   const handleChange = event => {
     setSearch(event.target.value);
     console.log(search);
