@@ -44,6 +44,8 @@
   transform: scale(1.025);
 }
 .sprite {
+  /* display: inline-block; */
+  
   height: 200px;
   position: relative;
   bottom: 10px;

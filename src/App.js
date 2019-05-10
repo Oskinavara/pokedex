@@ -6,29 +6,35 @@ import PokemonCard from "./components/PokemonCard.jsx";
 const App = () => {
   const [data, setData] = useState({});
   const [search, setSearch] = useState("");
-  const [dataNew, setDataNew] = useState([]);
-  const newArray = new Array(151);
-  // useEffect(() => {
-  //   (async () => {
-  //     const result = await axios.get(
-  //       "http://pokeapi.co/api/v2/pokemon?limit=151"
-  //     );
-  //     setData(result.data["results"]);
-  //   })();
-  // }, []);
+  const [dataNew, setDataNew] = useState({});
+  const newArray = new Array(151).fill(0);
   useEffect(() => {
     (async () => {
       const result = await axios.get(
-        newArray.map(
-          (item, index) => `http://pokeapi.co/api/v2/pokemon/${index + 1}`
-        )
+        "http://pokeapi.co/api/v2/pokemon?limit=151"
       );
-      setData(result);
+      setData(result.data["results"]);
     })();
   }, []);
+  // useEffect(() => {
+  //   (async ()=> {
+  //     const result = await Promise.all(
+  //       newArray.map((item, index) =>
+  //         axios.get(`http://pokeapi.co/api/v2/pokemon/${index + 1}`)
+  //       )
+  //     );
+  //     setDataNew(result);
+  //     console.log(dataNew);
+  //   })();
+  //   // fetchData();
+
+  //   // console.log(dataNew);
+  //   // console.log(newArray);
+  // }, []);
+
   const handleChange = event => {
     setSearch(event.target.value);
-    console.log(search);
+    // console.log(search);
   };
   return (
     <div className="App">
@@ -58,11 +64,10 @@ const App = () => {
                 ))
               : ""
             : ""} */}
-          {Object.keys(data)
-            .map((pokemon, index) => (
-              <PokemonCard key={index} pokemonID={index} />
-            ))
-            .filter((pokemon, index) => !data[index].name.search(search))}
+          {Object.keys(data).map((pokemon, index) => (
+            <PokemonCard key={index} pokemonID={index} />
+          ))
+          .filter((pokemon, index) => data[index].name.search(search)!==-1)}
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 // import typeColor from "./../functions/typeColor.js"
 
-const PokemonCard = ({ pokemonID }) => {
+const PokemonCard = ({ pokemonID, data }) => {
   const [pokemon, setPokemon] = useState({});
   useEffect(() => {
     (async () => {
