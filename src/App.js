@@ -7,7 +7,7 @@ const App = () => {
   // const [data, setData] = useState({});
   // const [search, setSearch] = useState("");
   const [dataNew, setDataNew] = useState([]);
-  const newArray = new Array(151);
+  const newArray = new Array(80).fill(1);
   // useEffect(() => {
   //   (async () => {
   //     const result = await axios.get(
@@ -23,8 +23,9 @@ const App = () => {
           axios.get(`http://pokeapi.co/api/v2/pokemon/${index + 1}`)
         )
       );
-      setDataNew(result);
-      console.log(result);
+      setDataNew(result.map(item=>item.data));
+      console.log(dataNew);
+      // console.log(result);
     }
     fetchData();
   }, []);

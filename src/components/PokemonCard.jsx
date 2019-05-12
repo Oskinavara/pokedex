@@ -4,14 +4,14 @@ import axios from "axios";
 
 const PokemonCard = ({ pokemonID, data }) => {
   const [pokemon, setPokemon] = useState({});
-  // useEffect(() => {
-  //   (async () => {
-  //     const result = await axios.get(
-  //       `http://pokeapi.co/api/v2/pokemon/${pokemonID + 1}`
-  //     );
-  //     setPokemon(result.data);
-  //   })();
-  // }, [pokemonID]);
+  useEffect(() => {
+    (async () => {
+      const result = await axios.get(
+        `http://pokeapi.co/api/v2/pokemon/${pokemonID + 1}`
+      );
+      setPokemon(result.data);
+    })();
+  }, [pokemonID]);
   const typeColor = type => {
     switch (type) {
       case "poison":
