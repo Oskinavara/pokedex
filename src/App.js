@@ -35,6 +35,7 @@ const App = () => {
             type="text"
             className="input"
             name="search"
+            placeholder="Name or Number"
             onChange={handleChange}
           />
           <label>
@@ -54,7 +55,9 @@ const App = () => {
                   />
                 ))
                 .filter(
-                  (item, index) => dataNew[index].name.search(search) !== -1
+                  (item, index) =>
+                    dataNew[index].name.search(search) !== -1 ||
+                    dataNew[index].id.toString() === search
                 )
             : ""}
         </div>
