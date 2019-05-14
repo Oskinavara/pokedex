@@ -5,8 +5,8 @@ import PokemonCard from "./components/PokemonCard.jsx";
 
 const App = () => {
   const [search, setSearch] = useState("");
-  const [dataNew, setDataNew] = useState({});
-  const newArray = new Array(151).fill("");
+  const [data, setData] = useState([]);
+  const newArray = new Array(151).fill(""); //only first generation of Pokemon
 
   useEffect(() => {
     async function fetchData() {
@@ -15,17 +15,24 @@ const App = () => {
           axios.get(`http://pokeapi.co/api/v2/pokemon/${index + 1}`)
         )
       );
-      setDataNew(result.map(item => item.data));
+      setData(result.map(item => item.data));
     }
     fetchData();
     //eslint-disable-next-line
   }, []);
-  const handleChange = event => {
-    setSearch(event.target.value);
+  const maxStatsValues = () => {
+    let valueObject = {};
+    valueObject["speed"] = Math.max(...data.map(item => item.stats[0].base_stat));
+    valueObject["defense"] = Math.max(...data.map(item => item.stats[3].base_stat));
+    valueObject["attack"] = Math.max(...data.map(item => item.stats[4].base_stat));
+    valueObject["hp"] = Math.max(...data.map(item => item.stats[5].base_stat));
+    return valueObject;
   };
   return (
     <div className="App">
-      {dataNew[0] ? console.log(dataNew) : ""}
+      {data[0]
+        ? console.log(maxStatsValues().hp)
+        : ""}
       <header className="fixed-header">
         <div className="logo-block">
           <img src="images/logo.png" alt="" className="logo" />
@@ -36,7 +43,7 @@ const App = () => {
             className="input"
             name="search"
             placeholder="Name or Number"
-            onChange={handleChange}
+            onChange={event => setSearch(event.target.value)}
           />
           <label>
             <h5 className="input-label">Type to search for Pokemon</h5>
@@ -45,19 +52,21 @@ const App = () => {
       </header>
       <div className="search-results">
         <div className="grid">
-          {dataNew[0]
-            ? dataNew
+          {data[0]
+            ? data
                 .map((item, index) => (
                   <PokemonCard
                     key={index}
                     pokemonID={index}
-                    pokemon={dataNew[index]}
+                    pokemon={data[index]}
+                    // onClick={handleClick}
+                    // displayInfo={displayInfo}
                   />
                 ))
                 .filter(
                   (item, index) =>
-                    dataNew[index].name.search(search) !== -1 ||
-                    dataNew[index].id.toString() === search
+                    data[index].name.search(search) !== -1 ||
+                    data[index].id.toString() === search
                 )
             : ""}
         </div>
