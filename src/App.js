@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import PokemonCard from "./components/PokemonCard.jsx";
-import maxStatsValues from "./functions/maxStatsValues.js"
+// import maxStatsValues from "./functions/maxStatsValues.js";
 
 const App = () => {
   const [search, setSearch] = useState("");

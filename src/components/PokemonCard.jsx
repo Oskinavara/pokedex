@@ -2,19 +2,22 @@ import React, { useState } from "react";
 import typeColor from "./../functions/typeColor.js";
 import PokemonInfo from "./PokemonInfo.jsx";
 
-const PokemonCard = ({ pokemon, pokemonID }) => {
+const PokemonCard = ({ pokemon }) => {
   const [display, setDisplay] = useState("none");
-  const handleClick = () => {
+  const showInfo = () => {
     setDisplay("block");
+  };
+  const hideInfo = () => {
+    setDisplay("none");
   };
   return (
     <div className="pokemon">
-      <PokemonInfo display={display} />
+      <PokemonInfo pokemon={pokemon} display={display} hide={hideInfo} />
       <img
         src={pokemon.sprites ? pokemon.sprites.front_default : ""}
-        alt={`Pokemon${pokemonID + 1}`}
+        alt={`Pokemon${pokemon.id + 1}`}
         className="sprite"
-        onClick={handleClick}
+        onClick={showInfo}
       />
       <h2>{pokemon.name}</h2>
       <div className="pokemon-type">

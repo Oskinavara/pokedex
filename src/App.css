@@ -44,8 +44,7 @@
   transform: scale(1.025);
 }
 .sprite {
-  /* display: inline-block; */
-  
+  margin-bottom: -30px;
   height: 200px;
   position: relative;
   bottom: 10px;
@@ -94,6 +93,34 @@ h3 {
   width: 400px;
   background: green;
   border-radius: 10px;
-  right: 400px;
+  right: 300px;
   display: none;
+}
+.close-block{
+  position: absolute;
+  right: 0;
+}
+.close-block__button{
+  background: rgba(0,0,0,0);
+  border: rgba(0,0,0,0);
+  font-weight: bold;
+}
+
+.progress{
+  position: relative;
+  height: 20px;
+  margin: 20px 0 20px 0;
+  background: #bdc3c7;
+  width: 20%;
+  transform: rotate(270deg);
+}
+.progress > span {
+  display: block;
+  height: 100%;
+  background-color: rgb(230, 126, 34);
+  box-shadow:
+  inset 0 2px 9px rgba(255,255,255,0.3),
+  inset 0 -2px 6px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
 }
