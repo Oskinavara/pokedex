@@ -4,18 +4,10 @@ import axios from "axios";
 import PokemonCard from "./components/PokemonCard.jsx";
 
 const App = () => {
-  // const [data, setData] = useState({});
-  // const [search, setSearch] = useState("");
-  const [dataNew, setDataNew] = useState([]);
-  const newArray = new Array(80).fill(1);
-  // useEffect(() => {
-  //   (async () => {
-  //     const result = await axios.get(
-  //       "http://pokeapi.co/api/v2/pokemon?limit=151"
-  //     );
-  //     setData(result.data["results"]);
-  //   })();
-  // }, []);
+  const [search, setSearch] = useState("");
+  const [dataNew, setDataNew] = useState({});
+  const newArray = new Array(151).fill("");
+
   useEffect(() => {
     async function fetchData() {
       const result = await Promise.all(
@@ -23,18 +15,17 @@ const App = () => {
           axios.get(`http://pokeapi.co/api/v2/pokemon/${index + 1}`)
         )
       );
-      setDataNew(result.map(item=>item.data));
-      console.log(dataNew);
-      // console.log(result);
+      setDataNew(result.map(item => item.data));
     }
     fetchData();
+    //eslint-disable-next-line
   }, []);
-  // const handleChange = event => {
-  //   // setSearch(event.target.value);
-  //   // console.log(search);
-  // };
+  const handleChange = event => {
+    setSearch(event.target.value);
+  };
   return (
     <div className="App">
+      {dataNew[0] ? console.log(dataNew) : ""}
       <header className="fixed-header">
         <div className="logo-block">
           <img src="images/logo.png" alt="" className="logo" />
@@ -44,27 +35,28 @@ const App = () => {
             type="text"
             className="input"
             name="search"
-            // onChange={handleChange}
+            onChange={handleChange}
           />
           <label>
             <h5 className="input-label">Type to search for Pokemon</h5>
           </label>
         </div>
       </header>
-
       <div className="search-results">
         <div className="grid">
-          {/* {data.results
-            ? data.results[0].name.search("bu") !== -1
-              ? Object.keys(data).map((pokemon, index) => (
-                  <PokemonCard key={index} pokemonID={index} />
+          {dataNew[0]
+            ? dataNew
+                .map((item, index) => (
+                  <PokemonCard
+                    key={index}
+                    pokemonID={index}
+                    pokemon={dataNew[index]}
+                  />
                 ))
-              : ""
-            : ""} */}
-          {/* {Object.keys(data).map((pokemon, index) => (
-            <PokemonCard key={index} pokemonID={index} />
-          ))
-          .filter((pokemon, index) => data[index].name.search(search)!==-1)} */}
+                .filter(
+                  (item, index) => dataNew[index].name.search(search) !== -1
+                )
+            : ""}
         </div>
       </div>
     </div>
