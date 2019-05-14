@@ -24,7 +24,6 @@ const App = () => {
 
   return (
     <div className="App">
-    {data[0] ? console.log(maxStatsValues(data).hp) : ""}
       <header className="fixed-header">
         <div className="logo-block">
           <img src="images/logo.png" alt="" className="logo" />
