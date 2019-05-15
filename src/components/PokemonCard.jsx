@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import typeColor from "./../functions/typeColor.js";
 import PokemonInfo from "./PokemonInfo.jsx";
 
-const PokemonCard = ({ pokemon }) => {
+const PokemonCard = ({ pokemon, maxStats }) => {
   const [display, setDisplay] = useState("none");
   const showInfo = () => {
     setDisplay("block");
@@ -12,7 +12,7 @@ const PokemonCard = ({ pokemon }) => {
   };
   return (
     <div className="pokemon">
-      <PokemonInfo pokemon={pokemon} display={display} hide={hideInfo} />
+      <PokemonInfo pokemon={pokemon} maxStats={maxStats}display={display} hide={hideInfo} />
       <img
         src={pokemon.sprites ? pokemon.sprites.front_default : ""}
         alt={`Pokemon${pokemon.id + 1}`}

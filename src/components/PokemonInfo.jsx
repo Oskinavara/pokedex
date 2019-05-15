@@ -1,6 +1,11 @@
 import React from "react";
 
-const PokemonInfo = ({ pokemon, display, hide }) => {
+const PokemonInfo = ({ pokemon, display, hide, maxStats }) => {
+  const barHeight = index => {
+    let height = (pokemon.stats[0].base_stat * 100) / maxStats.speed;
+    // console.log(height);
+    return `${height}%`;
+  };
   return (
     <div className="info-block" style={{ display: display }}>
       <div className="close-block">
@@ -29,9 +34,13 @@ const PokemonInfo = ({ pokemon, display, hide }) => {
       </div>
       <div>
         <h3>Stats:</h3>
-        <div class="progress">
-          <span style={{ width: "25%" }} />
-        </div>
+
+        {Object.keys(maxStats).map(item => (
+          <div className="stat-bar">
+            <span style={{ width: barHeight() }} />
+          </div>
+        ))}
+        {/* <span style={{ width: barHeight() }} /> */}
       </div>
     </div>
   );

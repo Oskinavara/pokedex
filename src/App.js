@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import PokemonCard from "./components/PokemonCard.jsx";
-// import maxStatsValues from "./functions/maxStatsValues.js";
+import maxStatsValues from "./functions/maxStatsValues.js";
 
 const App = () => {
   const [search, setSearch] = useState("");
@@ -24,6 +24,7 @@ const App = () => {
 
   return (
     <div className="App">
+    {console.log(maxStatsValues(data))}
       <header className="fixed-header">
         <div className="logo-block">
           <img src="images/logo.png" alt="" className="logo" />
@@ -48,8 +49,8 @@ const App = () => {
                 .map((item, index) => (
                   <PokemonCard
                     key={index}
-                    pokemonID={index}
                     pokemon={data[index]}
+                    maxStats={maxStatsValues(data)}
                   />
                 ))
                 .filter(
