@@ -12,7 +12,12 @@ const PokemonCard = ({ pokemon, maxStats }) => {
   };
   return (
     <div className="pokemon">
-      <PokemonInfo pokemon={pokemon} maxStats={maxStats}display={display} hide={hideInfo} />
+      <PokemonInfo
+        pokemon={pokemon}
+        maxStats={maxStats}
+        display={display}
+        hide={hideInfo}
+      />
       <img
         src={pokemon.sprites ? pokemon.sprites.front_default : ""}
         alt={`Pokemon${pokemon.id + 1}`}

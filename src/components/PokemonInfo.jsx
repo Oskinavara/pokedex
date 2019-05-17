@@ -2,16 +2,28 @@ import React from "react";
 
 const PokemonInfo = ({ pokemon, display, hide, maxStats }) => {
   const barHeight = index => {
-    let height = (pokemon.stats[0].base_stat * 100) / maxStats.speed;
-    // console.log(height);
+    let height =
+      (pokemon.stats[index].base_stat * 100) / Object.values(maxStats)[index];
+    console.log(height);
     return `${height}%`;
   };
   return (
     <div className="info-block" style={{ display: display }}>
+      {/* {console.log(pokemon.stats[0].base_stat/Object.values(maxStats)[0])} */}
       <div className="close-block">
         <button className="close-block__button" onClick={hide}>
           {"X"}
         </button>
+      </div>
+      <div className="stats-block">
+        {Object.keys(maxStats).map((item, index) => (
+          <span>
+            <div className="stat-bar" key={index}>
+              <span style={{ width: barHeight(index) }} />
+            </div>
+            <span>{item}</span>
+          </span>
+        ))}
       </div>
       <div className="pokemon-name">
         <h1>{`${pokemon.name} #${pokemon.id}`}</h1>
@@ -31,16 +43,6 @@ const PokemonInfo = ({ pokemon, display, hide, maxStats }) => {
           .map((item, index) => (
             <span key={index}>{item}</span>
           ))}
-      </div>
-      <div>
-        <h3>Stats:</h3>
-
-        {Object.keys(maxStats).map(item => (
-          <div className="stat-bar">
-            <span style={{ width: barHeight() }} />
-          </div>
-        ))}
-        {/* <span style={{ width: barHeight() }} /> */}
       </div>
     </div>
   );
