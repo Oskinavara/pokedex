@@ -1,22 +1,20 @@
-import React from "react";
+import React from 'react';
 
 const PokemonInfo = ({ pokemon, display, hide, maxStats }) => {
   const barHeight = index => {
-    let height =
-      (pokemon.stats[index].base_stat * 100) / Object.values(maxStats)[index];
+    let height = (pokemon.stats[index].base_stat * 100) / Object.values(maxStats)[index];
     return `${height}%`;
   };
   return (
     <div className="info-block" style={{ display: display }}>
-      {/* {console.log(pokemon.stats[0].base_stat/Object.values(maxStats)[0])} */}
       <div className="close-block">
         <button className="close-block__button" onClick={hide}>
-          {"X"}
+          {'X'}
         </button>
       </div>
       <div className="stats-block">
         {Object.keys(maxStats).map((item, index) => (
-          <span>
+          <span key={index}>
             <div className="stat-bar" key={index}>
               <span style={{ width: barHeight(index) }} />
             </div>
@@ -36,9 +34,9 @@ const PokemonInfo = ({ pokemon, display, hide, maxStats }) => {
         {pokemon.moves
           .slice(0, 3)
           .map(item => `${item.move.name} `)
-          .join("*")
-          .replace(/-/g, " ")
-          .split("*")
+          .join('*')
+          .replace(/-/g, ' ')
+          .split('*')
           .map((item, index) => (
             <span key={index}>{item}</span>
           ))}

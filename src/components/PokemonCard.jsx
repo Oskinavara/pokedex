@@ -1,28 +1,18 @@
-import React, { useState } from 'react';
-import typeColor from './../functions/typeColor.js';
-import PokemonInfo from './PokemonInfo.jsx';
+import React from 'react';
+import typeColor from './functions/typeColor.js';
 
-const PokemonCard = ({ pokemon, maxStats }) => {
-  const [display, setDisplay] = useState('none');
-  const showInfo = () => {
-    setDisplay('block');
-  };
-  const hideInfo = () => {
-    setDisplay('none');
-  };
+const PokemonCard = ({ pokemon, onClick }) => {
   return (
-    <div className="pokemon">
-      <PokemonInfo pokemon={pokemon} maxStats={maxStats} display={display} hide={hideInfo} />
+    <div className="pokemon" onClick={onClick}>
       <img
         src={pokemon.sprites ? pokemon.sprites.front_default : ''}
         alt={`Pokemon${pokemon.id + 1}`}
         className="sprite"
-        onClick={showInfo}
       />
       <h2>{pokemon.name}</h2>
       <div className="pokemon-type">
-        {pokemon.types.map(item => (
-          <span className="type-span" style={{ background: typeColor(item.type.name) }}>
+        {pokemon.types.map((item, index) => (
+          <span key={index} className="type-span" style={{ background: typeColor(item.type.name) }}>
             {item.type.name}
           </span>
         ))}

@@ -3,6 +3,7 @@
   src: url(https://cdn.rawgit.com/shelune/pokedex-entry/master/pkm-red-font.ttf) format('truetype');
 }
 @import url('https://fonts.googleapis.com/css?family=Fredoka+One');
+/* @import url(./assets/magnifier.svg); */
 .App {
   text-align: center;
   background: #9e9e9e;
@@ -25,6 +26,23 @@
 .input {
   width: 200px;
   height: 30px;
+  border-radius: 20px;
+  border: solid 2px gray;
+  outline: none;
+  padding: 0px 10px;
+}
+
+.input::placeholder {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  position: relative;
+  background-image: url('./assets/magnifier.svg');
+  background-repeat: no-repeat;
+  background-position: 0px 50%;
+  line-height: normal;
+  background-size: 14px;
+  letter-spacing: 1px;
+  padding: 10px 20px;
 }
 .input-label {
   font-size: 3vmin;
@@ -32,7 +50,6 @@
 }
 .pokemon {
   position: relative;
-  /* height: 250px;  nie ustawienie wysokosci powoduje, ze wszystko sie miesci w bloku*/
   width: 300px;
   background: #6d6d6d;
   margin: 2.5%;
@@ -40,7 +57,8 @@
   border-radius: 5px;
 }
 .pokemon:hover {
-  transform: scale(1.025);
+  transform: scale(1.02);
+  transition: ease-in 0.08s;
 }
 
 .sprite {
@@ -51,7 +69,6 @@
 }
 h2 {
   position: relative;
-  /* bottom: 3.8vmin; */
   font-family: 'pokemon-red';
   font-size: 30px;
   margin: 0;
@@ -60,44 +77,37 @@ h2 {
 h3 {
   border-radius: 20px;
 }
-.pokemon-type {
-  /* position: relative; */
-  /* bottom: 3.4vmin; */
-}
+
 .type-span {
   border-radius: 10px;
   padding: 2px 6px;
-  font-family: 'Fredoka One', cursive;
   border: #dddddd 2px solid;
-  /* font-weight: bold; */
   font-size: 20px;
+  font-family: 'Fredoka One', cursive;
 }
 .search-results {
   display: block;
   position: relative;
-  margin-top: 13vmin;
+  margin-top: 25vmin;
   background-color: #9e9e9e;
   color: white;
   max-width: 100%;
   text-align: center;
   padding-top: 20px;
-}
-.grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
   place-items: center;
 }
+
 .info-block {
-  position: absolute;
-  top: -10px;
-  /* transform: rotate(0deg); */
+  position: fixed;
+  margin: auto;
+  top: 50%;
   z-index: 3;
-  height: 100%;
-  width: 160%;
+  height: 40%;
+  width: 80%;
   background: #5a5a5a;
   border-radius: 10px;
-  /* right: 300px; */
-  display: none;
 }
 .close-block {
   position: absolute;
