@@ -1,5 +1,5 @@
 import React from 'react';
-import typeColor from './functions/typeColor.js';
+import typeColor from 'functions/typeColor';
 
 const PokemonCard = ({ pokemon, onClick }) => {
   return (

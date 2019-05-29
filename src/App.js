@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
-import PokemonCard from './components/PokemonCard.jsx';
-import PokemonInfo from './components/PokemonInfo';
-import maxStatsValues from './functions/maxStatsValues.js';
+import PokemonCard from 'components/PokemonCard.jsx';
+import PokemonInfo from 'components/PokemonInfo';
+import maxStatsValues from 'functions/maxStatsValues.js';
 
 const App = () => {
   const [search, setSearch] = useState('');
