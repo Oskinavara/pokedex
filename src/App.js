@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import 'App.css';
+import 'css/header.css';
+import 'css/grid.css';
 import axios from 'axios';
 import PokemonCard from 'components/PokemonCard.jsx';
 import PokemonInfo from 'components/PokemonInfo';
@@ -9,6 +11,7 @@ const App = () => {
   const [search, setSearch] = useState('');
   const [data, setData] = useState([]);
   const [infoVisible, setInfoVisible] = useState(false);
+  const [chosenPokemon, setChosenPokemon] = useState(null);
   const newArray = new Array(151).fill(''); //only first generation of Pokemon
 
   useEffect(() => {
@@ -22,15 +25,9 @@ const App = () => {
     //eslint-disable-next-line
   }, []);
 
-  // const [display, setDisplay] = useState('none');
-  // const showInfo = () => {
-  //   setDisplay('block');
-  // };
-  // const hideInfo = () => {
-  //   setDisplay('none');
-  // };
-  const handleClick = () => {
+  const handleClick = index => {
     setInfoVisible(!infoVisible);
+    setChosenPokemon(index);
   };
   return (
     <div className="App">
@@ -51,11 +48,13 @@ const App = () => {
           </label>
         </div>
       </header>
-      {infoVisible && data[0] ? <PokemonInfo pokemon={data[0]} maxStats={maxStatsValues(data)} /> : ''}
+      {infoVisible && data[5] ? <PokemonInfo pokemon={data[chosenPokemon]} maxStats={maxStatsValues(data)} /> : ''}
       <div className="search-results">
         {data[0]
           ? data
-              .map((item, index) => <PokemonCard key={index} pokemon={data[index]} onClick={handleClick} />)
+              .map((item, index) => (
+                <PokemonCard key={index} pokemon={data[index]} onClick={() => handleClick(index)} />
+              ))
               .filter((item, index) => data[index].name.search(search) !== -1 || data[index].id.toString() === search)
           : ''}
       </div>

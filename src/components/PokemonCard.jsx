@@ -3,7 +3,7 @@ import typeColor from 'functions/typeColor';
 
 const PokemonCard = ({ pokemon, onClick }) => {
   return (
-    <div className="pokemon" onClick={onClick}>
+    <div className="pokemon" onClick={onClick(pokemon.id)}>
       <img
         src={pokemon.sprites ? pokemon.sprites.front_default : ''}
         alt={`Pokemon${pokemon.id + 1}`}
