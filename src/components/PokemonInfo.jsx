@@ -21,16 +21,20 @@ const PokemonInfo = ({ pokemon, hide, maxStats }) => {
   return (
     <div className="info-block">
       <div className="close-block">
-        <i class="fas fa-times close-block__button" onClick={hide} />
+        <i className="fas fa-times close-block__button" onClick={hide} />
       </div>
-      <h1 className="pokemon-name">{`${pokemon.name} #${pokemon.id}`}</h1>
+      <h1 className="pokemon-name">{`${pokemon.name} # ${pokemon.id < 10 ? '00' : pokemon.id < 100 ? '0' : ''}${
+        pokemon.id
+      }`}</h1>
       <div className="info-container">
-        <div className="info-container__left">
+        <div>
           <img
             src={pokemon.sprites ? pokemon.sprites.front_default : ''}
             alt={`Pokemon${pokemon.id + 1}`}
             className="sprite-info"
           />
+        </div>
+        <div>
           <div className="pokemon-height-weight">
             <span>{`Height: ${pokemon.height / 10}m`}</span>
             <span>{`Weight: ${pokemon.weight / 10}kg`}</span>
@@ -48,7 +52,7 @@ const PokemonInfo = ({ pokemon, hide, maxStats }) => {
               ))}
           </div>
         </div>
-        <div className="info-container__bars">
+        <div>
           <div className="stats-block">
             {Object.keys(maxStats).map((item, index) => (
               <span key={index}>
@@ -57,18 +61,18 @@ const PokemonInfo = ({ pokemon, hide, maxStats }) => {
                     <span
                       style={{
                         width: `${barWidth(index)}%`,
-                        backgroundColor: `hsl(${barWidth(index) * 1.2 - 20}deg, 80%, 45%)`
+                        backgroundColor: `hsl(${(barWidth(index) * 110) / 90}deg, 80%, 45%)`
                       }}
                     />
                   </div>
-                  <div>{item}</div>
+                  <div className="stat-name">{item}</div>
                 </div>
               </span>
             ))}
           </div>
         </div>
       </div>
-      {desc ? <div className="description">{desc}</div> : ''}
+      <div className="pokemon-description">{desc && desc}</div>
     </div>
   );
 };

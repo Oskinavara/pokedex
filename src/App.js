@@ -46,9 +46,6 @@ const App = () => {
             placeholder="Name or Number"
             onChange={event => setSearch(event.target.value)}
           />
-          <label>
-            <h5 className="input-label">Type to search for Pokemon</h5>
-          </label>
         </div>
       </header>
       {infoVisible && data[5] ? (
