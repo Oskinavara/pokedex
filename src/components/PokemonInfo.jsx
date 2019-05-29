@@ -4,7 +4,6 @@ const PokemonInfo = ({ pokemon, display, hide, maxStats }) => {
   const barHeight = index => {
     let height =
       (pokemon.stats[index].base_stat * 100) / Object.values(maxStats)[index];
-    console.log(height);
     return `${height}%`;
   };
   return (
