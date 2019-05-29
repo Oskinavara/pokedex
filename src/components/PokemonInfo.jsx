@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'css/pokemoninfo.css';
+import axios from 'axios';
 
-const PokemonInfo = ({ pokemon, display, hide, maxStats }) => {
+const PokemonInfo = ({ pokemon, hide, maxStats }) => {
+  const [desc, setDesc] = useState('');
   const barWidth = index => {
     let width = (pokemon.stats[index].base_stat * 100) / Object.values(maxStats)[index];
     return `${width}`;
   };
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = await axios.get(`http://pokeapi.co/api/v2/pokemon-species/${pokemon.id}`);
+      const descIndex = result.data.flavor_text_entries.findIndex(item => item.language.name === 'en');
+      setDesc(result.data.flavor_text_entries[descIndex].flavor_text);
+    }
+    fetchData();
+    //eslint-disable-next-line
+  }, []);
   return (
-    <div className="info-block" style={{ display: display }}>
+    <div className="info-block">
       <div className="close-block">
-        <button className="close-block__button" onClick={hide}>
-          {'X'}
-        </button>
+        <i class="fas fa-times close-block__button" onClick={hide} />
       </div>
       <h1 className="pokemon-name">{`${pokemon.name} #${pokemon.id}`}</h1>
       <div className="info-container">
@@ -42,20 +52,23 @@ const PokemonInfo = ({ pokemon, display, hide, maxStats }) => {
           <div className="stats-block">
             {Object.keys(maxStats).map((item, index) => (
               <span key={index}>
-                <div className="stat-bar" key={index}>
-                  <span
-                    style={{
-                      width: `${barWidth(index)}%`,
-                      backgroundColor: `hsl(${barWidth(index) * 1.2 - 20}deg, 80%, 45%)`
-                    }}
-                  />
+                <div>
+                  <div className="stat-bar" key={index}>
+                    <span
+                      style={{
+                        width: `${barWidth(index)}%`,
+                        backgroundColor: `hsl(${barWidth(index) * 1.2 - 20}deg, 80%, 45%)`
+                      }}
+                    />
+                  </div>
+                  <div>{item}</div>
                 </div>
-                <span>{item}</span>
               </span>
             ))}
           </div>
         </div>
       </div>
+      {desc ? <div className="description">{desc}</div> : ''}
     </div>
   );
 };

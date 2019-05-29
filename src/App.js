@@ -25,9 +25,12 @@ const App = () => {
     //eslint-disable-next-line
   }, []);
 
-  const handleClick = index => {
+  const showInfo = index => {
     setInfoVisible(!infoVisible);
     setChosenPokemon(index);
+  };
+  const hideInfo = () => {
+    setInfoVisible(false);
   };
   return (
     <div className="App">
@@ -48,13 +51,15 @@ const App = () => {
           </label>
         </div>
       </header>
-      {infoVisible && data[5] ? <PokemonInfo pokemon={data[chosenPokemon]} maxStats={maxStatsValues(data)} /> : ''}
+      {infoVisible && data[5] ? (
+        <PokemonInfo pokemon={data[chosenPokemon]} maxStats={maxStatsValues(data)} hide={hideInfo} />
+      ) : (
+        ''
+      )}
       <div className="search-results">
         {data[0]
           ? data
-              .map((item, index) => (
-                <PokemonCard key={index} pokemon={data[index]} onClick={() => handleClick(index)} />
-              ))
+              .map((item, index) => <PokemonCard key={index} pokemon={data[index]} onClick={() => showInfo(index)} />)
               .filter((item, index) => data[index].name.search(search) !== -1 || data[index].id.toString() === search)
           : ''}
       </div>
