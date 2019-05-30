@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import 'App.css';
-import 'css/header.css';
-import 'css/grid.css';
+import 'App.scss';
+import 'css/header.scss';
+import 'css/grid.scss';
 import axios from 'axios';
 import PokemonCard from 'components/PokemonCard.jsx';
 import PokemonInfo from 'components/PokemonInfo';

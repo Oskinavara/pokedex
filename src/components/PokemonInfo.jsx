@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import 'css/pokemoninfo.css';
+import 'css/pokemoninfo.scss';
 import axios from 'axios';
 
 const PokemonInfo = ({ pokemon, hide, maxStats }) => {
@@ -48,7 +48,7 @@ const PokemonInfo = ({ pokemon, hide, maxStats }) => {
               .replace(/-/g, ' ')
               .split('*')
               .map((item, index) => (
-                <span key={index}>{item}</span>
+                <div key={index}>{item}</div>
               ))}
           </div>
         </div>
