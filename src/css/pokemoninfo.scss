@@ -1,17 +1,16 @@
 $light-gray: #787878;
 .info-block {
   position: fixed;
-  top: 15%;
+  top: 24%;
   left: 20%;
   z-index: 3;
   color: white;
-  height: 72vh;
   width: 60vw;
   margin: auto;
   background: #616161;
   border-radius: 10px;
   font-family: 'Fira Sans', sans-serif;
-  box-shadow: 2px 4px 20px hsla(0, 0, 0, 0.5);
+  box-shadow: 2px 6px 20px hsla(0, 0, 0, 0.5);
 }
 
 .close-block {
@@ -38,7 +37,7 @@ $light-gray: #787878;
 }
 .info-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1.2fr 0.7fr;
   place-items: start;
 }
 
@@ -57,7 +56,7 @@ $light-gray: #787878;
   display: flex;
   flex-direction: column;
   position: relative;
-  // top: 4%;
+  top: 1%;
   font-size: 2rem;
   background: $light-gray;
   border-radius: 10px;
@@ -74,21 +73,25 @@ $light-gray: #787878;
   }
 }
 .stats-block {
+  background: $light-gray;
+  padding: 10px;
+  border-radius: 10px;
   position: relative;
+  right: 10px;
+  bottom: 3.5%;
   text-align: center;
   width: 100%;
   height: 100%;
-  margin: auto;
   display: grid;
   grid-template-columns: 1fr;
-  grid-row-gap: 10px;
+  grid-row-gap: 6px;
 }
 .stat-bar {
   position: relative;
   height: 25px;
-  margin: 0px 0;
+  margin: 0;
   background: #a3a7aa;
-  width: 300px;
+  width: 360px;
   border-radius: 60px;
   > span {
     display: block;
@@ -100,7 +103,7 @@ $light-gray: #787878;
   }
 }
 .stat-name {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   text-transform: capitalize;
 }
 .sprite-info {
@@ -113,7 +116,7 @@ $light-gray: #787878;
 }
 .pokemon-description {
   font-size: 35px;
-  padding: 10px 30px;
+  padding: 20px 30px;
   text-align: center;
 }
 

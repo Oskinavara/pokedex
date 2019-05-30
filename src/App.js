@@ -5,7 +5,8 @@ import 'css/grid.scss';
 import axios from 'axios';
 import PokemonCard from 'components/PokemonCard.jsx';
 import PokemonInfo from 'components/PokemonInfo';
-import maxStatsValues from 'functions/maxStatsValues.js';
+import maxStatsValues from 'functions/maxStatsValues';
+import typeColor, { types } from 'functions/typeColor';
 
 const App = () => {
   const [search, setSearch] = useState('');
@@ -47,13 +48,20 @@ const App = () => {
             onChange={event => setSearch(event.target.value)}
           />
         </div>
+        <div className="type-search">
+          {types.map((item, index) => (
+            <span key={index} className="type-span" style={{ background: typeColor(item) }}>
+              {item}
+            </span>
+          ))}
+        </div>
       </header>
       {infoVisible && data[5] ? (
         <PokemonInfo pokemon={data[chosenPokemon]} maxStats={maxStatsValues(data)} hide={hideInfo} />
       ) : (
         ''
       )}
-      <div className="search-results">
+      <div className="pokemon-grid">
         {data[0]
           ? data
               .map((item, index) => <PokemonCard key={index} pokemon={data[index]} onClick={() => showInfo(index)} />)

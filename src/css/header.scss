@@ -28,4 +28,19 @@
     letter-spacing: 1px;
     padding: 0 25px;
   }
+  &::after {
+    content: ' ';
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBkPSJNMTYuMDAzIDE4LjYyNmw3LjA4MS03LjA4MUwyNSAxMy40NmwtOC45OTcgOC45OTgtOS4wMDMtOSAxLjkxNy0xLjkxNnoiLz48L3N2Zz4=');
+  }
+}
+
+.type-search {
+  // padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  width: 60%;
+  margin: auto;
+  > span {
+    margin: 3px;
+  }
 }
