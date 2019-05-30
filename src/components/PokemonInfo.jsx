@@ -21,7 +21,7 @@ const PokemonInfo = ({ pokemon, hide, maxStats }) => {
   return (
     <div className="info-block">
       <div className="close-block">
-        <i className="fas fa-times close-block__button" onClick={hide} />
+        <i className="fas fa-times " onClick={hide} />
       </div>
       <h1 className="pokemon-name">{`${pokemon.name} # ${pokemon.id < 10 ? '00' : pokemon.id < 100 ? '0' : ''}${
         pokemon.id
@@ -36,10 +36,10 @@ const PokemonInfo = ({ pokemon, hide, maxStats }) => {
         </div>
         <div>
           <div className="pokemon-height-weight">
-            <span>{`Height: ${pokemon.height / 10}m`}</span>
-            <span>{`Weight: ${pokemon.weight / 10}kg`}</span>
+            <div>{`Height: ${pokemon.height / 10}m`}</div>
+            <div>{`Weight: ${pokemon.weight / 10}kg`}</div>
           </div>
-          <div>
+          <div className="abilities">
             <h3>Abilities:</h3>
             {pokemon.moves
               .slice(0, 3)

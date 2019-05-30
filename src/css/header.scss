@@ -16,17 +16,16 @@
   outline: none;
   padding: 0px 13px;
   border: solid #9e9e9e 2px;
-}
-
-.input::placeholder {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1rem;
-  position: relative;
-  background-image: url('./../assets/magnifier.svg');
-  background-repeat: no-repeat;
-  background-position: 3px 50%;
-  line-height: normal;
-  background-size: 13px;
-  letter-spacing: 1px;
-  padding: 0 25px;
+  &::placeholder {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    position: relative;
+    background-image: url('./../assets/magnifier.svg');
+    background-repeat: no-repeat;
+    background-position: 3px 50%;
+    line-height: normal;
+    background-size: 13px;
+    letter-spacing: 1px;
+    padding: 0 25px;
+  }
 }
