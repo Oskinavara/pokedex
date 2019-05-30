@@ -1,0 +1,30 @@
+@font-face {
+  font-family: 'pokemon-red';
+  src: url(https://cdn.rawgit.com/shelune/pokedex-entry/master/pkm-red-font.ttf) format('truetype');
+}
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One');
+/* @import url(./assets/magnifier.svg); */
+.App {
+  text-align: center;
+  background: #9e9e9e;
+}
+* {
+  margin: inherit;
+  box-sizing: inherit;
+}
+h1 {
+  font-family: 'pokemon-red';
+  font-size: 40px;
+}
+h2 {
+  font-family: 'pokemon-red';
+  font-size: 30px;
+  margin: 0;
+  padding: 20px;
+}
+h3 {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 2.5rem;
+  padding: 10px;
+}
