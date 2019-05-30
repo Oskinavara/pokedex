@@ -52,24 +52,22 @@ const PokemonInfo = ({ pokemon, hide, maxStats }) => {
               ))}
           </div>
         </div>
-        <div>
-          <div className="stats-block">
-            {Object.keys(maxStats).map((item, index) => (
-              <span key={index}>
-                <div>
-                  <div className="stat-bar" key={index}>
-                    <span
-                      style={{
-                        width: `${barWidth(index)}%`,
-                        backgroundColor: `hsl(${(barWidth(index) * 110) / 90}deg, 80%, 45%)`
-                      }}
-                    />
-                  </div>
-                  <div className="stat-name">{item}</div>
+        <div className="stats-block">
+          {Object.keys(maxStats).map((item, index) => (
+            <span key={index}>
+              <div>
+                <div className="stat-bar" key={index}>
+                  <span
+                    style={{
+                      width: `${barWidth(index)}%`,
+                      backgroundColor: `hsl(${(barWidth(index) * 110) / 90}deg, 80%, 45%)`
+                    }}
+                  />
                 </div>
-              </span>
-            ))}
-          </div>
+                <div className="stat-name">{item}</div>
+              </div>
+            </span>
+          ))}
         </div>
       </div>
       <div className="pokemon-description">{desc && desc}</div>
