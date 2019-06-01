@@ -15,7 +15,8 @@ const App = () => {
   const [infoVisible, setInfoVisible] = useState(false);
   const [chosenPokemon, setChosenPokemon] = useState(null);
   const [headerHeight, setHeaderHeight] = useState(0);
-  const [rotation, setRotation] = useState('rotate(0deg)');
+  const [rotation, setRotation] = useState(0);
+  const [scale, setScale] = useState(0);
   const newArray = new Array(151).fill(''); //only first generation of Pokemon
   useEffect(() => {
     async function fetchData() {
@@ -31,14 +32,16 @@ const App = () => {
   const showInfo = index => {
     setInfoVisible(!infoVisible);
     setChosenPokemon(index);
+    setScale(1);
   };
   const hideInfo = () => {
     setInfoVisible(false);
+    setScale(0);
   };
   const showAdvancedSearch = () => {
     setAdvancedSearch(!advancedSearch);
     headerHeight === 0 ? setHeaderHeight(80) : setHeaderHeight(0);
-    rotation === 'rotate(0deg)' ? setRotation('rotate(90deg)') : setRotation('rotate(0deg)');
+    rotation === 0 ? setRotation(90) : setRotation(0);
   };
 
   return (
@@ -56,7 +59,11 @@ const App = () => {
             onChange={event => setSearch(event.target.value)}
           />
           <span>
-            <i className="fas fa-chevron-right" onClick={showAdvancedSearch} style={{ transform: rotation }} />
+            <i
+              className="fas fa-chevron-right"
+              onClick={showAdvancedSearch}
+              style={{ transform: `rotate(${rotation}deg)` }}
+            />
           </span>
         </div>
         <div className="type-block" style={{ transform: `translateY(${headerHeight}px)` }}>
@@ -69,9 +76,8 @@ const App = () => {
           </div>
         </div>
       </header>
-
       {infoVisible && data[0] ? (
-        <PokemonInfo pokemon={data[chosenPokemon]} maxStats={maxStatsValues(data)} hide={hideInfo} />
+        <PokemonInfo pokemon={data[chosenPokemon]} maxStats={maxStatsValues(data)} hide={hideInfo} scale={scale} />
       ) : (
         ''
       )}

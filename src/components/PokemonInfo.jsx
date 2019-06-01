@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import 'css/pokemoninfo.scss';
 import axios from 'axios';
 
-const PokemonInfo = ({ pokemon, hide, maxStats }) => {
+const PokemonInfo = ({ pokemon, hide, maxStats, scale }) => {
   const [desc, setDesc] = useState('');
   const barWidth = index => {
     let width = (pokemon.stats[index].base_stat * 100) / Object.values(maxStats)[index];
@@ -60,7 +60,9 @@ const PokemonInfo = ({ pokemon, hide, maxStats }) => {
                   <span
                     style={{
                       width: `${barWidth(index)}%`,
-                      backgroundColor: `hsl(${(barWidth(index) * 110) / 90}deg, 80%, 45%)`
+                      background: `hsl(${(barWidth(index) * 110) / 90}deg, 80%, 45%)`,
+                      transform: `scaleX(${scale})`,
+                      transition: `ease-in 10s`
                     }}
                   />
                 </div>
