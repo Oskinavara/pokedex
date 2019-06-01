@@ -10,11 +10,13 @@ import typeColor, { types } from 'functions/typeColor';
 
 const App = () => {
   const [search, setSearch] = useState('');
+  const [advancedSearch, setAdvancedSearch] = useState(false);
   const [data, setData] = useState([]);
   const [infoVisible, setInfoVisible] = useState(false);
   const [chosenPokemon, setChosenPokemon] = useState(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
+  const [rotation, setRotation] = useState('rotate(0deg)');
   const newArray = new Array(151).fill(''); //only first generation of Pokemon
-
   useEffect(() => {
     async function fetchData() {
       const result = await Promise.all(
@@ -33,13 +35,19 @@ const App = () => {
   const hideInfo = () => {
     setInfoVisible(false);
   };
+  const showAdvancedSearch = () => {
+    setAdvancedSearch(!advancedSearch);
+    headerHeight === 0 ? setHeaderHeight(80) : setHeaderHeight(0);
+    rotation === 'rotate(0deg)' ? setRotation('rotate(90deg)') : setRotation('rotate(0deg)');
+  };
+
   return (
     <div className="App">
       <header className="fixed-header">
-        <div className="logo-block">
-          <img src="images/logo.png" alt="" className="logo" />
-        </div>
-        <div className="search-bar">
+        <div className="header-wrapper">
+          <div className="logo-block">
+            <img src="images/logo.png" alt="" className="logo" />
+          </div>
           <input
             type="text"
             className="input"
@@ -47,21 +55,28 @@ const App = () => {
             placeholder="Name or Number"
             onChange={event => setSearch(event.target.value)}
           />
+          <span>
+            <i className="fas fa-chevron-right" onClick={showAdvancedSearch} style={{ transform: rotation }} />
+          </span>
         </div>
-        <div className="type-search">
-          {types.map((item, index) => (
-            <span key={index} className="type-span" style={{ background: typeColor(item) }}>
-              {item}
-            </span>
-          ))}
+        <div className="type-block" style={{ transform: `translateY(${headerHeight}px)` }}>
+          <div className="type-search">
+            {types.map((item, index) => (
+              <span key={index} className="type-span">
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
       </header>
-      {infoVisible && data[5] ? (
+
+      {infoVisible && data[0] ? (
         <PokemonInfo pokemon={data[chosenPokemon]} maxStats={maxStatsValues(data)} hide={hideInfo} />
       ) : (
         ''
       )}
-      <div className="pokemon-grid">
+
+      <div className="pokemon-grid" style={{ transform: `translateY(${headerHeight}px)` }}>
         {data[0]
           ? data
               .map((item, index) => <PokemonCard key={index} pokemon={data[index]} onClick={() => showInfo(index)} />)
