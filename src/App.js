@@ -86,7 +86,13 @@ const App = () => {
         </div>
       </header>
       {infoVisible && data[0] ? (
-        <PokemonInfo pokemon={data[chosenPokemon]} maxStats={maxStatsValues(data)} hide={hideInfo} scale={scale} />
+        <PokemonInfo
+          pokemon={data[0]}
+          infoVisible={infoVisible}
+          maxStats={maxStatsValues(data)}
+          hide={hideInfo}
+          scale={scale}
+        />
       ) : (
         ''
       )}
@@ -95,15 +101,15 @@ const App = () => {
         {data[0]
           ? data
               .map((item, index) => <PokemonCard key={index} pokemon={data[index]} onClick={() => showInfo(index)} />)
-              .filter((item, index) =>
-                colored.indexOf(true) === -1
-                  ? item
-                  : colored
-                      .map((sub, subIndex) => (sub === true ? types[subIndex] : false))
-                      .filter(sub => sub !== false)
-                      .every(val => data[index].types.map(sub => sub.type.name).includes(val))
+              .filter(
+                (item, index) =>
+                  (colored
+                    .map((sub, subIndex) => (sub === true ? types[subIndex] : false))
+                    .filter(sub => sub !== false)
+                    .every(val => data[index].types.map(sub => sub.type.name).includes(val)) &&
+                    data[index].name.search(search) !== -1) ||
+                  data[index].id.toString() === search
               )
-              .filter((item, index) => data[index].name.search(search) !== -1 || data[index].id.toString() === search)
           : ''}
       </div>
     </div>

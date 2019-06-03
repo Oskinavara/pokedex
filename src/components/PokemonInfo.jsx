@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import 'css/pokemoninfo.scss';
 import axios from 'axios';
-
-const PokemonInfo = ({ pokemon, hide, maxStats, scale }) => {
+import { CSSTransition } from 'react-transition-group';
+const PokemonInfo = ({ pokemon, hide, maxStats, scale, infoVisible }) => {
   const [desc, setDesc] = useState('');
   const barWidth = index => {
     let width = (pokemon.stats[index].base_stat * 100) / Object.values(maxStats)[index];
     return `${width}`;
   };
-
+  const [dupa, setDupa] = useState(false);
   useEffect(() => {
     async function fetchData() {
       const result = await axios.get(`http://pokeapi.co/api/v2/pokemon-species/${pokemon.id}`);
@@ -16,8 +16,10 @@ const PokemonInfo = ({ pokemon, hide, maxStats, scale }) => {
       setDesc(result.data.flavor_text_entries[descIndex].flavor_text);
     }
     fetchData();
+    setDupa(true);
     //eslint-disable-next-line
   }, []);
+
   return (
     <div className="info-block">
       <div className="close-block">
@@ -57,20 +59,21 @@ const PokemonInfo = ({ pokemon, hide, maxStats, scale }) => {
             <span key={index}>
               <div>
                 <div className="stat-bar" key={index}>
-                  <span
-                    style={{
-                      width: `${barWidth(index)}%`,
-                      background: `hsl(${(barWidth(index) * 110) / 90}deg, 80%, 45%)`
-                      // transform: `scaleX(${scale})`,
-                      // transition: `ease-in 10s`
-                    }}
-                  />
+                  <CSSTransition in={dupa} timeout={1000} classNames="my-node">
+                    <span
+                      style={{
+                        width: `${barWidth(index)}%`,
+                        background: `hsl(${(barWidth(index) * 110) / 90}deg, 80%, 45%)`
+                      }}
+                    />
+                  </CSSTransition>
                 </div>
                 <div className="stat-name">{item}</div>
               </div>
             </span>
           ))}
         </div>
+        )}
       </div>
       <div className="pokemon-description">{desc && desc}</div>
     </div>
