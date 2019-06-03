@@ -60,9 +60,9 @@ const PokemonInfo = ({ pokemon, hide, maxStats, scale }) => {
                   <span
                     style={{
                       width: `${barWidth(index)}%`,
-                      background: `hsl(${(barWidth(index) * 110) / 90}deg, 80%, 45%)`,
-                      transform: `scaleX(${scale})`,
-                      transition: `ease-in 10s`
+                      background: `hsl(${(barWidth(index) * 110) / 90}deg, 80%, 45%)`
+                      // transform: `scaleX(${scale})`,
+                      // transition: `ease-in 10s`
                     }}
                   />
                 </div>

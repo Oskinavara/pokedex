@@ -96,7 +96,6 @@ $info-window-color: #616161;
   border-radius: 60px;
   > span {
     transform-origin: left;
-    transform: scaleX(0);
     transition: scale ease-in 2s;
     transition-delay: 1s;
     display: block;
