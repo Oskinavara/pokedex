@@ -87,7 +87,7 @@ const App = () => {
       </header>
       {infoVisible && data[0] ? (
         <PokemonInfo
-          pokemon={data[0]}
+          pokemon={data[chosenPokemon]}
           infoVisible={infoVisible}
           maxStats={maxStatsValues(data)}
           hide={hideInfo}

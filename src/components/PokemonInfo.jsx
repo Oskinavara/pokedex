@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import 'css/pokemoninfo.scss';
 import axios from 'axios';
 import { CSSTransition } from 'react-transition-group';
-const PokemonInfo = ({ pokemon, hide, maxStats, scale, infoVisible }) => {
+const PokemonInfo = ({ pokemon, hide, maxStats }) => {
   const [desc, setDesc] = useState('');
   const barWidth = index => {
     let width = (pokemon.stats[index].base_stat * 100) / Object.values(maxStats)[index];
@@ -73,7 +73,6 @@ const PokemonInfo = ({ pokemon, hide, maxStats, scale, infoVisible }) => {
             </span>
           ))}
         </div>
-        )}
       </div>
       <div className="pokemon-description">{desc && desc}</div>
     </div>
