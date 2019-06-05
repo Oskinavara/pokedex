@@ -57,7 +57,7 @@ const App = () => {
             <img src="images/logo.png" alt="" className="logo" />
           </div>
           <input
-            type="text"
+            type="search"
             className="input"
             name="search"
             placeholder="Name or Number"
