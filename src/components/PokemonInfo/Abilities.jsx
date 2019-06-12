@@ -11,7 +11,7 @@ const Abilities = ({ abilities }) => {
         .replace(/-/g, ' ')
         .split('*')
         .map((item, index) => (
-          <div key={index}>{item}</div>
+          <h4 key={index}>{item}</h4>
         ))}
     </div>
   );

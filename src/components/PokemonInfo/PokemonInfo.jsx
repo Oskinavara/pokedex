@@ -25,21 +25,46 @@ const PokemonInfo = ({ pokemon, hide, maxStats }) => {
   }, []);
 
   return (
-    <div className="info-block">
-      <div className="close-block">
-        <i className="fas fa-times" onClick={hide} />
-      </div>
-      <PokemonName name={pokemon.name} id={pokemon.id} />
-      <div className="info-container">
-        <Sprite sprite={pokemon.sprites} id={pokemon.id} className={'sprite-info'} />
+    <div className="info-container">
+      <div className="info-block">
+        <div className="close-block">
+          <i className="fas fa-times" onClick={hide} />
+        </div>
+        <PokemonName name={pokemon.name} id={pokemon.id} />
+        {/* <Sprite sprite={pokemon.sprites} id={pokemon.id} className={'sprite-info'} />
+         */}
+        <img
+          src={pokemon.sprites ? pokemon.sprites.front_default : ''}
+          alt={`Pokemon${pokemon.id + 1}`}
+          className={'sprite-info'}
+        />
 
-        <div>
-          <Dimensions dimensions={pokemon} />
-          <Abilities abilities={pokemon.moves} />
+        <div className="feats">
+          <h4>{`Height: ${pokemon.height / 10}m`}</h4>
+          <h4>{`Weight: ${pokemon.weight / 10}kg`}</h4>
+
+          <h3>Abilities:</h3>
+          {pokemon.moves
+            .slice(0, 3)
+            .map(item => `${item.move.name} `)
+            .join('*')
+            .replace(/-/g, ' ')
+            .split('*')
+            .map((item, index) => (
+              <h4 className="ability" key={index}>
+                {item}
+              </h4>
+            ))}
+
+          {/* <Dimensions dimensions={pokemon} /> */}
+          {/* <Abilities abilities={pokemon.moves} /> */}
         </div>
         <Stats maxStats={maxStats} animationStart={animationStart} barWidth={barWidth} />
+
+        <div className="pokemon-description">
+          <h3>{desc ? desc : 'Loading...'}</h3>
+        </div>
       </div>
-      <div className="pokemon-description">{desc ? desc : 'Loading...'}</div>
     </div>
   );
 };
