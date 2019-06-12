@@ -1,22 +1,13 @@
 import React from 'react';
-import typeColor from 'functions/typeColor';
+import Sprite from './Sprite';
+import PokemonTypes from './PokemonTypes';
 
 const PokemonCard = ({ pokemon, onClick }) => {
   return (
     <div className="pokemon" onClick={onClick}>
-      <img
-        src={pokemon.sprites ? pokemon.sprites.front_default : ''}
-        alt={`Pokemon${pokemon.id + 1}`}
-        className="sprite"
-      />
+      <Sprite sprite={pokemon.sprites} id={pokemon.id} className={'sprite'} />
       <h2>{pokemon.name}</h2>
-      <div className="pokemon-type">
-        {pokemon.types.map((item, index) => (
-          <span key={index} className="type-span" style={{ background: typeColor(item.type.name) }}>
-            {item.type.name}
-          </span>
-        ))}
-      </div>
+      <PokemonTypes types={pokemon.types} />
     </div>
   );
 };

@@ -4,9 +4,10 @@ import 'css/header.scss';
 import 'css/grid.scss';
 import axios from 'axios';
 import PokemonCard from 'components/PokemonCard.jsx';
-import PokemonInfo from 'components/PokemonInfo';
+import PokemonInfo from 'components/PokemonInfo/PokemonInfo';
 import maxStatsValues from 'functions/maxStatsValues';
-import typeColor, { types } from 'functions/typeColor';
+import { types } from 'functions/typeColor';
+import Header from './components/Header/Header';
 
 const App = () => {
   const [search, setSearch] = useState('');
@@ -51,40 +52,14 @@ const App = () => {
 
   return (
     <div className="App">
-      <header className="fixed-header">
-        <div className="header-wrapper">
-          <div className="logo-block">
-            <img src="images/logo.png" alt="" className="logo" />
-          </div>
-          <input
-            type="search"
-            className="input"
-            name="search"
-            placeholder="Name or Number"
-            onChange={event => setSearch(event.target.value)}
-          />
-          <span>
-            <i
-              className="fas fa-chevron-right"
-              onClick={showAdvancedSearch}
-              style={{ transform: `rotate(${rotation}deg)` }}
-            />
-          </span>
-        </div>
-        <div className="type-block" style={{ transform: `translateY(${headerHeight}px)` }}>
-          <div className="type-search">
-            {types.map((item, index) => (
-              <span
-                key={index}
-                style={colored[index] ? { background: typeColor(types[index]) } : { background: '' }}
-                className="type-span"
-                onClick={() => toggleType(index)}>
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
-      </header>
+      <Header
+        onChange={event => setSearch(event.target.value)}
+        showAdvancedSearch={showAdvancedSearch}
+        toggleType={toggleType}
+        colored={colored}
+        rotation={rotation}
+        headerHeight={headerHeight}
+      />
       {infoVisible && data[0] ? (
         <PokemonInfo
           pokemon={data[chosenPokemon]}
