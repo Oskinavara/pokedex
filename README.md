@@ -31,4 +31,4 @@ All contributors and pull requests are very welcome.
 
 ## License
 
-The project is licensed under [MIT License](https://opensource.org/licenses/MIT).
+The project is licensed under [MIT License](https://opensource.org/licenses/MIT). See [LICENSE](https://github.com/Oskinavara/pokedex/blob/master/LICENSE) for more information.
