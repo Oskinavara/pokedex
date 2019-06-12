@@ -15,7 +15,7 @@ const PokemonInfo = ({ pokemon, hide, maxStats }) => {
   const [animationStart, setAnimationStart] = useState(false);
   useEffect(() => {
     async function fetchData() {
-      const result = await axios.get(`http://pokeapi.co/api/v2/pokemon-species/${pokemon.id}`);
+      const result = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}`);
       const descIndex = result.data.flavor_text_entries.findIndex(item => item.language.name === 'en');
       setDesc(result.data.flavor_text_entries[descIndex].flavor_text);
     }

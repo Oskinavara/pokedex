@@ -23,7 +23,7 @@ const App = () => {
   useEffect(() => {
     async function fetchData() {
       const result = await Promise.all(
-        newArray.map((item, index) => axios.get(`http://pokeapi.co/api/v2/pokemon/${index + 1}`))
+        newArray.map((item, index) => axios.get(`https://pokeapi.co/api/v2/pokemon/${index + 1}`))
       );
       setData(result.map(item => item.data));
     }
