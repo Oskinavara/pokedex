@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import 'css/pokemoninfo.scss';
 import axios from 'axios';
 import PokemonName from 'components/PokemonInfo/PokemonName';
-import Sprite from '../Sprite';
-import Dimensions from './Dimensions';
-import Abilities from './Abilities';
+// import Sprite from '../Sprite';
+// import Dimensions from './Dimensions';
+// import Abilities from './Abilities';
 import Stats from './Stats';
 const PokemonInfo = ({ pokemon, hide, maxStats }) => {
   const [desc, setDesc] = useState('');

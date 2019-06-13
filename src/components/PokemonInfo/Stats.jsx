@@ -20,9 +20,7 @@ const Stats = ({ maxStats, barWidth }) => {
               />
             </CSSTransition>
           </div>
-          <div className="stat-name">
-            <h5>{item}</h5>
-          </div>
+          <h5>{item}</h5>
         </div>
       ))}
     </div>

@@ -3,9 +3,9 @@ import typeColor from 'functions/typeColor';
 
 const PokemonTypes = ({ types }) => {
   return (
-    <div className="pokemon-type">
+    <div className="pokemon-types">
       {types.map((item, index) => (
-        <span key={index} className="type-span" style={{ background: typeColor(item.type.name) }}>
+        <span key={index} style={{ background: typeColor(item.type.name) }}>
           {item.type.name}
         </span>
       ))}
