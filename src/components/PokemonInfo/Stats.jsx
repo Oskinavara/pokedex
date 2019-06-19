@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 
-const Stats = ({ maxStats, barWidth }) => {
-  const [animationStart, setAnimationStart] = useState(false);
-  useEffect(() => {
-    setAnimationStart(true);
-  });
+const Stats = ({ maxStats, barWidth, animationStart }) => {
   return (
     <div className="stats-block">
       {Object.keys(maxStats).map((item, index) => (

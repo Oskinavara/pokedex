@@ -31,8 +31,7 @@ const PokemonInfo = ({ pokemon, hide, maxStats }) => {
           <i className="fas fa-times" onClick={hide} />
         </div>
         <PokemonName name={pokemon.name} id={pokemon.id} />
-        {/* <Sprite sprite={pokemon.sprites} id={pokemon.id} className={'sprite-info'} />
-         */}
+
         <img
           src={pokemon.sprites ? pokemon.sprites.front_default : ''}
           alt={`Pokemon${pokemon.id + 1}`}
@@ -55,12 +54,8 @@ const PokemonInfo = ({ pokemon, hide, maxStats }) => {
                 {item}
               </h4>
             ))}
-
-          {/* <Dimensions dimensions={pokemon} /> */}
-          {/* <Abilities abilities={pokemon.moves} /> */}
         </div>
         <Stats maxStats={maxStats} animationStart={animationStart} barWidth={barWidth} />
-
         <div className="pokemon-description">
           <h3>{desc ? desc : 'Loading...'}</h3>
         </div>

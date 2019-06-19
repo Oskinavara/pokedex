@@ -10,6 +10,7 @@ $info-window-color: #616161;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  transition: height 2s ease-in;
 
   margin: auto;
   color: white;
@@ -133,4 +134,19 @@ $info-window-color: #616161;
   body {
     font-size: 0.7rem;
   }
+}
+.my-node-enter {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.my-node-enter-active {
+  transform: scaleX(1);
+  transition: cubic-bezier(0.38, 0.79, 0.21, 1.01) 1s;
+}
+.my-node-exit {
+  opacity: 1;
+}
+.my-node-exit-active {
+  opacity: 0;
+  transition: opacity 5000ms;
 }
