@@ -119,22 +119,6 @@ $info-window-color: #616161;
   margin: 0.6em 0.6em;
 }
 
-@media only screen and (max-width: 900px), (max-height: 600px) {
-  body {
-    font-size: 1.2rem;
-  }
-}
-@media only screen and (max-width: 700px), (max-height: 400px) {
-  body {
-    font-size: 1rem;
-  }
-}
-
-@media only screen and (max-width: 500px), (max-height: 350px) {
-  body {
-    font-size: 0.7rem;
-  }
-}
 .my-node-enter {
   transform: scaleX(0);
   transform-origin: left;

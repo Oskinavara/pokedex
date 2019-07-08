@@ -1,25 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import 'css/pokemoninfo.scss';
-import axios from 'axios';
+// import axios from 'axios';
 import PokemonName from 'components/PokemonInfo/PokemonName';
 // import Sprite from '../Sprite';
 // import Dimensions from './Dimensions';
 // import Abilities from './Abilities';
 import Stats from './Stats';
-const PokemonInfo = ({ pokemon, hide, maxStats }) => {
-  const [desc, setDesc] = useState('');
+const PokemonInfo = ({ pokemon, hide, maxStats, description }) => {
+  // const [desc, setDesc] = useState('');
   const barWidth = index => {
     let width = (pokemon.stats[index].base_stat * 100) / Object.values(maxStats)[index];
     return `${width}`;
   };
   const [animationStart, setAnimationStart] = useState(false);
   useEffect(() => {
-    async function fetchData() {
-      const result = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}`);
-      const descIndex = result.data.flavor_text_entries.findIndex(item => item.language.name === 'en');
-      setDesc(result.data.flavor_text_entries[descIndex].flavor_text);
-    }
-    fetchData();
     setAnimationStart(true);
     //eslint-disable-next-line
   }, []);
@@ -57,7 +51,9 @@ const PokemonInfo = ({ pokemon, hide, maxStats }) => {
         </div>
         <Stats maxStats={maxStats} animationStart={animationStart} barWidth={barWidth} />
         <div className="pokemon-description">
-          <h3>{desc ? desc : 'Loading...'}</h3>
+          {/* <h3>{desc ? desc : 'Loading...'}</h3>
+           */}
+          <h3>{description}</h3>
         </div>
       </div>
     </div>
