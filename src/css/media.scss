@@ -1,0 +1,110 @@
+// @media only screen and (max-width: 900px) {
+//   .pokemon-grid {
+//     top: calc(13vh + 6em + 30px);
+//   }
+// }
+// @media only screen and (max-width: 610px) {
+//   .pokemon-grid {
+//     top: calc(13vh + 5em + 50px);
+//   }
+// }
+
+// @media only screen and (max-width: 930px) {
+//   .type-buttons__wrapper {
+//     top: 72%;
+//   }
+// }
+// @media only screen and (max-width: 770px) {
+//   .type-buttons__wrapper {
+//     top: 69%;
+//   }
+// }
+// @media only screen and (max-width: 610px) {
+//   .type-buttons__wrapper {
+//     top: 60%;
+//   }
+//   .type-buttons {
+//     grid-template-columns: repeat(4, 1fr);
+//     > span {
+//       padding-top: 2px;
+//       padding-bottom: 2px;
+//       margin-top: 2px;
+//       margin-bottom: 2px;
+//       padding: 0.2em;
+//     }
+//   }
+// }
+// @media only screen and (max-width: 530px) {
+//   .sprite {
+//     width: 130px;
+//   }
+//   .pokemon {
+//     width: 130px;
+//   }
+//   .pokemon-grid {
+//     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+//     // top: calc(13vh + 1em + 30px);
+//   }
+// }
+@media only screen and (max-width: 890px) {
+  .logo {
+    width: 600px;
+  }
+  .pokemon-grid {
+    top: 10.6em;
+  }
+  .type-buttons__wrapper {
+    top: 5.7em;
+  }
+}
+@media only screen and (max-width: 660px) {
+  .logo {
+    width: 470px;
+  }
+  .pokemon-grid {
+    top: 8.6em;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+  .sprite {
+    width: 120px;
+  }
+  .pokemon {
+    width: 145px;
+  }
+  .type-buttons {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .type-buttons__wrapper {
+    top: 0.5em;
+  }
+  .pokemon > h2 {
+    font-size: 1.2em;
+  }
+  .pokemon-types {
+    font-size: 0.6em;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .logo {
+    width: 320px;
+  }
+  .pokemon-grid {
+    top: 7em;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+  .sprite {
+    width: 120px;
+  }
+  .pokemon {
+    width: 145px;
+  }
+  .type-buttons__wrapper {
+    top: -1em;
+  }
+  .pokemon > h2 {
+    font-size: 1em;
+  }
+  .pokemon-types {
+    font-size: 0.6em;
+  }
+}

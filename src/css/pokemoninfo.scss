@@ -1,24 +1,50 @@
 $light-gray: #787878;
 $info-window-color: #616161;
+
 .info-block {
   position: fixed;
-  top: 24%;
-  left: 20%;
-  z-index: 3;
-  color: white;
-  width: 60vw;
+  display: block;
+  z-index: 1000;
+  width: 95%;
+  max-width: 70em;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: height 2s ease-in;
+
   margin: auto;
+  color: white;
   background: $info-window-color;
   border-radius: 10px;
   font-family: 'Fira Sans', sans-serif;
   box-shadow: 2px 6px 20px hsla(0, 0, 0, 0.5);
+  display: grid;
+  grid-template: 0.6fr 2fr auto / 18em 1fr 1.4fr;
+  align-items: start;
+  font-size: 1em;
+}
+@media only screen and (max-width: 890px) {
+  .info-block {
+    width: 90%;
+    font-size: 0.65em;
+  }
 }
 
+@media only screen and (max-width: 660px) {
+  .info-block {
+    font-size: 0.5em;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .info-block {
+    font-size: 0.37em;
+  }
+}
 .close-block {
   position: absolute;
-  right: 10px;
-  top: 10px;
-  border-radius: 40px;
+  right: 0.6em;
+  top: 0.6em;
+  border-radius: 50%;
   &:hover {
     background: darken($info-window-color, 5%);
   }
@@ -28,114 +54,92 @@ $info-window-color: #616161;
   }
   > i {
     font-weight: bold;
-    font-size: 20px;
-    padding: 4px 7px;
+    padding: 0.25em 0.4em;
   }
+  cursor: pointer;
 }
 
 .pokemon-name {
-  margin: 35px 0;
-}
-.info-container {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr 0.7fr;
-  place-items: start;
+  grid-area: 1/ 1 / span 1 / span 3;
 }
 
 .pokemon-height-weight {
   background: $light-gray;
   font-weight: bold;
-  position: relative;
-  bottom: 7.5%;
+
   border-radius: 10px;
-  > div {
-    font-size: 2rem;
-    padding: 6px;
-  }
 }
-.abilities {
+.feats {
+  grid-area: 2/ 2 / span 1 / span 1;
   display: flex;
   flex-direction: column;
-  position: relative;
-  top: 1%;
-  font-size: 2rem;
   background: $light-gray;
+  padding: 0.2em;
   border-radius: 10px;
-  > div {
+  > h4 {
     font-weight: bold;
-    font-size: 1.7rem;
     text-transform: capitalize;
     background: #555555;
     box-shadow: darkred 2px;
-    box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0), inset 0 -2px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0), inset 0 -2px 12px rgba(0, 0, 0, 0.4);
     border-radius: 30px;
-    padding: 5px 15px;
-    margin: 5px 20px;
+    padding: 0.1em 0.1em;
+    margin: 0.2em 0.1em;
+    display: inline;
   }
 }
+
 .stats-block {
   background: $light-gray;
-  padding: 10px;
   border-radius: 10px;
-  position: relative;
-  right: 10px;
-  bottom: 3.5%;
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-row-gap: 6px;
+  grid-area: 2/ 3 / span 1 / span 1;
+  display: flex;
+  flex-direction: column;
+  > div {
+    margin-bottom: 0.1em;
+  }
+  margin: 0 0.6em;
+  padding: 0.6em 0.6em 0 0.6em;
+  text-transform: capitalize;
 }
 .stat-bar {
-  position: relative;
-  height: 25px;
-  margin: 0;
+  width: 100%;
+  height: 1.3em;
   background: #a3a7aa;
-  width: 360px;
-  border-radius: 60px;
+  margin: auto;
+  border-radius: 30px;
+
   > span {
     display: block;
     height: 100%;
-    box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3), inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.5), inset 0 -2px 6px rgba(0, 0, 0, 0.6);
     position: relative;
     overflow: hidden;
     border-radius: inherit;
   }
 }
-.stat-name {
-  font-size: 1.3rem;
-  text-transform: capitalize;
-}
+
 .sprite-info {
-  position: relative;
-  height: 350px;
-  bottom: 3%;
+  display: block;
+  width: 90%;
+  // max-width: 100%;
   background: $light-gray;
+  grid-area: 2/ 1 / span 1 / span 1;
   border-radius: 10px;
-  margin-left: 10px;
+  margin: 0 2em 0 0.6em;
 }
 .pokemon-description {
   background: $light-gray;
-  margin: 10px;
-  border-radius: 10px;
-  font-size: 35px;
-  padding: 20px 30px;
+  grid-area: 3/ 1 / span 1 / span 3;
   text-align: center;
-}
-
-@media (orientation: portrait) {
-  .info-block {
-    height: 45vh;
-    width: 96vw;
-    left: 2%;
-    top: 30%;
-  }
+  font-size: 0.8em;
+  padding: 0.4em;
+  border-radius: 10px;
+  margin: 0.6em 0.6em;
 }
 
 .my-node-enter {
   transform: scaleX(0);
-
   transform-origin: left;
 }
 .my-node-enter-active {
