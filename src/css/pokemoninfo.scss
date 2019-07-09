@@ -21,8 +21,25 @@ $info-window-color: #616161;
   display: grid;
   grid-template: 0.6fr 2fr auto / 18em 1fr 1.4fr;
   align-items: start;
+  font-size: 1em;
+}
+@media only screen and (max-width: 890px) {
+  .info-block {
+    width: 90%;
+    font-size: 0.65em;
+  }
 }
 
+@media only screen and (max-width: 660px) {
+  .info-block {
+    font-size: 0.5em;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .info-block {
+    font-size: 0.37em;
+  }
+}
 .close-block {
   position: absolute;
   right: 0.6em;
@@ -39,6 +56,7 @@ $info-window-color: #616161;
     font-weight: bold;
     padding: 0.25em 0.4em;
   }
+  cursor: pointer;
 }
 
 .pokemon-name {
@@ -104,6 +122,7 @@ $info-window-color: #616161;
 .sprite-info {
   display: block;
   width: 90%;
+  // max-width: 100%;
   background: $light-gray;
   grid-area: 2/ 1 / span 1 / span 1;
   border-radius: 10px;

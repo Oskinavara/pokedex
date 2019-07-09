@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import 'css/pokemoninfo.scss';
-// import axios from 'axios';
 import PokemonName from 'components/PokemonInfo/PokemonName';
-// import Sprite from '../Sprite';
-// import Dimensions from './Dimensions';
-// import Abilities from './Abilities';
 import Stats from './Stats';
 const PokemonInfo = ({ pokemon, hide, maxStats, description }) => {
-  // const [desc, setDesc] = useState('');
   const barWidth = index => {
     let width = (pokemon.stats[index].base_stat * 100) / Object.values(maxStats)[index];
     return `${width}`;

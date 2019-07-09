@@ -6,7 +6,7 @@
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   place-items: center;
   grid-gap: 0.7em;
-  top: 13em;
+  top: 12em;
   position: relative;
   transition: transform 0.3s ease;
 }
@@ -14,8 +14,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: left;
-  width: 250px;
   background: #6d6d6d;
   border-radius: 5px;
   > h2 {
@@ -26,11 +24,13 @@
     transform: scale(1.02);
     transition: ease-out 0.06s;
   }
+  cursor: pointer;
 }
 .sprite {
   display: block;
   margin: auto;
   width: 250px;
+  max-width: 100%;
   overflow: hidden;
 }
 .pokemon-types {

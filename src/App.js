@@ -22,11 +22,11 @@ const App = () => {
   const [desc, setDesc] = useState([]);
 
   const [colored, setColored] = useState(Array(18).fill(false));
-  const newArray = new Array(90).fill(''); //only first generation of Pokemon
+  const newArray = new Array(151).fill(''); //only first generation of Pokemon
   useEffect(() => {
     async function fetchData() {
       const result = await Promise.all(
-        newArray.map((item, index) => axios.get(`https://pokeapi.co/api/v2/pokemon/${index + 15}`))
+        newArray.map((item, index) => axios.get(`https://pokeapi.co/api/v2/pokemon/${index + 1}`))
       );
       const descriptions = await Promise.all(
         newArray.map((item, index) => axios.get(`https://pokeapi.co/api/v2/pokemon-species/${index + 1}`))
@@ -59,7 +59,7 @@ const App = () => {
   const showAdvancedSearch = () => {
     if (translateY !== 0) {
       setTranslateY(0);
-    } else window.innerWidth > 660 ? setTranslateY(65) : setTranslateY(130);
+    } else window.innerWidth > 660 ? setTranslateY(65) : setTranslateY(120);
     rotation === 0 ? setRotation(90) : setRotation(0);
   };
   const toggleType = index => {
